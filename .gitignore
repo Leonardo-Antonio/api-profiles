@@ -1,0 +1,5 @@
+.idea
+.c
+.ssh
+.env
+*-test.go
