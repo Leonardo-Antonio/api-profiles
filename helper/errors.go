@@ -8,4 +8,5 @@ var (
 	ErrInsecurePassword           = errors.New("the password entered insecure")
 	ErrUserInvalid                = errors.New("the user not exist")
 	ErrRowNotAffected             = errors.New("the row not affected")
+	ErrStmtSQL                    = errors.New("sql query could not be processed")
 )
