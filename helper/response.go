@@ -1,6 +1,6 @@
 package helper
 
-type Response struct {
+type response struct {
 	MessageType string      `json:"message_type" xml:"message_type"`
 	Message     string      `json:"message" xml:"message"`
 	Error       bool        `json:"error" xml:"error"`
@@ -11,8 +11,8 @@ func ResponseJSON(
 	messageType, message string,
 	err bool,
 	data interface{},
-) *Response {
-	return &Response{
+) *response {
+	return &response{
 		MessageType: messageType,
 		Message:     message,
 		Error:       err,
