@@ -14,7 +14,7 @@ func NewStorage(db *sql.DB) *Storage {
 	return &Storage{db}
 }
 
-func (s *Storage) GetAll() (users []Model, err error) {
+func (s *Storage) GetAll() (users []model, err error) {
 	stmt, err := s.db.Prepare(sqlGetAll)
 	if err != nil {
 		return
@@ -30,7 +30,7 @@ func (s *Storage) GetAll() (users []Model, err error) {
 	profileNull := sql.NullString{}
 
 	for rows.Next() {
-		user := Model{}
+		user := model{}
 		err := rows.Scan(
 			&user.ID,
 			&user.Name,
@@ -49,7 +49,7 @@ func (s *Storage) GetAll() (users []Model, err error) {
 	return
 }
 
-func (s *Storage) SingUp(data Model) error {
+func (s *Storage) SingUp(data model) error {
 	stmt, err := s.db.Prepare(sqlSignUp)
 	if err != nil {
 		return err
@@ -85,7 +85,7 @@ func (s *Storage) SingUp(data Model) error {
 	return nil
 }
 
-func (s *Storage) SingIn(identification Model) (data Model, err error) {
+func (s *Storage) SingIn(identification model) (data model, err error) {
 	stmt, err := s.db.Prepare(sqlSignIn)
 	if err != nil {
 		return
@@ -109,7 +109,7 @@ func (s *Storage) SingIn(identification Model) (data Model, err error) {
 	return
 }
 
-func (s *Storage) Delete(identification Model) error {
+func (s *Storage) Delete(identification model) error {
 	stmt, err := s.db.Prepare(sqlDelete)
 	if err != nil {
 		return err
@@ -130,7 +130,7 @@ func (s *Storage) Delete(identification Model) error {
 	return nil
 }
 
-func (s *Storage) Update(data Model) error {
+func (s *Storage) Update(data model) error {
 	stmt, err := s.db.Prepare(sqlUpdate)
 	if err != nil {
 		return err

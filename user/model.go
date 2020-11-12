@@ -1,6 +1,6 @@
 package user
 
-type Model struct {
+type model struct {
 	ID       int    `json:"id" xml:"id"`
 	Name     string `json:"name" xml:"name"`
 	LastName string `json:"last_name" xml:"last_name"`
