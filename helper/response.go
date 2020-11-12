@@ -1,5 +1,10 @@
 package helper
 
+const (
+	ERROR   = "error"
+	MESSAGE = "message"
+)
+
 type response struct {
 	MessageType string      `json:"message_type" xml:"message_type"`
 	Message     string      `json:"message" xml:"message"`
