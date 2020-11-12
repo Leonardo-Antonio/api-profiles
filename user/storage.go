@@ -49,7 +49,7 @@ func (s *Storage) GetAll() (users []model, err error) {
 	return
 }
 
-func (s *Storage) SingUp(data model) error {
+func (s *Storage) SignUp(data model) error {
 	stmt, err := s.db.Prepare(sqlSignUp)
 	if err != nil {
 		return err
@@ -79,16 +79,16 @@ func (s *Storage) SingUp(data model) error {
 
 	rA, err := rs.RowsAffected()
 	if rA != 1 {
-		return err
+		return helper.ErrRowNotAffected
 	}
 
 	return nil
 }
 
-func (s *Storage) SingIn(identification model) (data model, err error) {
+func (s *Storage) SignIn(identification model) (data model, err error) {
 	stmt, err := s.db.Prepare(sqlSignIn)
 	if err != nil {
-		return
+		return data, helper.ErrStmtSQL
 	}
 	defer stmt.Close()
 
@@ -133,7 +133,7 @@ func (s *Storage) Delete(identification model) error {
 func (s *Storage) Update(data model) error {
 	stmt, err := s.db.Prepare(sqlUpdate)
 	if err != nil {
-		return err
+		return helper.ErrStmtSQL
 	}
 	defer stmt.Close()
 
